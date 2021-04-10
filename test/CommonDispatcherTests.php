@@ -16,8 +16,8 @@ use Psr\EventDispatcher\StoppableEventInterface;
 
 trait CommonDispatcherTests
 {
-    abstract public function getDispatcher() : EventDispatcherInterface;
-    abstract public function getListenerProvider() : ObjectProphecy;
+    abstract public function getDispatcher(): EventDispatcherInterface;
+    abstract public function getListenerProvider(): ObjectProphecy;
 
     public function testImplementsEventDispatcherInterface()
     {
@@ -75,7 +75,7 @@ trait CommonDispatcherTests
                 $this->spy = $spy;
             }
 
-            public function isPropagationStopped() : bool
+            public function isPropagationStopped(): bool
             {
                 return $this->spy->caught > 3;
             }

@@ -23,18 +23,18 @@ class ErrorEmittingDispatcherTest extends TestCase
 {
     use CommonDispatcherTests;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->provider = $this->prophesize(ListenerProviderInterface::class);
         $this->dispatcher = new ErrorEmittingDispatcher($this->provider->reveal());
     }
 
-    public function getDispatcher() : EventDispatcherInterface
+    public function getDispatcher(): EventDispatcherInterface
     {
         return $this->dispatcher;
     }
 
-    public function getListenerProvider() : ObjectProphecy
+    public function getListenerProvider(): ObjectProphecy
     {
         return $this->provider;
     }

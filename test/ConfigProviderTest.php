@@ -7,14 +7,14 @@
 
 declare(strict_types=1);
 
-namespace Phly\EventDispatcherTest;
+namespace PhlyTest\EventDispatcher;
 
 use PHPUnit\Framework\TestCase;
 use Phly\EventDispatcher\ConfigProvider;
 
 class ConfigProviderTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->provider = new ConfigProvider();
     }
@@ -22,7 +22,7 @@ class ConfigProviderTest extends TestCase
     public function testInvocationReturnsArray()
     {
         $config = ($this->provider)();
-        $this->assertInternalType('array', $config);
+        $this->assertIsArray($config);
         return $config;
     }
 
@@ -32,6 +32,6 @@ class ConfigProviderTest extends TestCase
     public function testReturnedArrayContainsDependencies(array $config)
     {
         $this->assertArrayHasKey('dependencies', $config);
-        $this->assertInternalType('array', $config['dependencies']);
+        $this->assertIsArray($config['dependencies']);
     }
 }

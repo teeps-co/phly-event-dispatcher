@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Phly\EventDispatcher;
+namespace PhlyTest\EventDispatcher;
 
 use Phly\EventDispatcher\ErrorEmittingDispatcher;
 use Phly\EventDispatcher\EventDispatcher;
@@ -20,7 +20,7 @@ use TypeError;
 
 class EventDispatcherFactoryTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->provider  = $this->prophesize(ListenerProviderInterface::class)->reveal();
         $this->container = $this->prophesize(ContainerInterface::class);
@@ -34,7 +34,7 @@ class EventDispatcherFactoryTest extends TestCase
         ($this->factory)($this->container->reveal(), stdClass::class);
     }
 
-    public function knownDispatcherTypes() : iterable
+    public function knownDispatcherTypes(): iterable
     {
         yield EventDispatcher::class => [EventDispatcher::class];
         yield ErrorEmittingDispatcher::class => [ErrorEmittingDispatcher::class];
